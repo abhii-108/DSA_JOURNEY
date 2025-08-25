@@ -23,6 +23,7 @@ def largest_k_element(arr, k):
         
 
     res = []
+    # if we use for loop then we were not getting last element 
     while min_heap:
         res.append(heapq.heappop(min_heap))
 
