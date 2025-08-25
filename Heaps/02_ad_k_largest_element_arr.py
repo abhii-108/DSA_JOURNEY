@@ -36,6 +36,6 @@ if __name__ == "__main__":
     k2 = 2
 
     # Function call
-    print("Kth Smallest Element is:", largest_k_element(arr, K))
+    print("k largest elements", largest_k_element(arr, K))
 
-    print("Kth Smallest Element is:", largest_k_element(arr2, k2))
+    print("k largest elements", largest_k_element(arr2, k2))
