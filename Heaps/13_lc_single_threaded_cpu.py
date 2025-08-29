@@ -33,11 +33,18 @@ def getOrder(tasks: List[List[int]]) -> List[int]:
     ## length of array 
     n = len(tasks)
 
+    #Enumerate the list to pair each inner list with its original index.
+    #The result will be a list of tuples like (index, sublist).
     indexed_list = list(enumerate(tasks))
-    #print(indexed_list)
+    #print(indexed_list)  --> [(0, [1, 2]), (1, [2, 4]), (2, [3, 2]), (3, [4, 1])] --> [(0, [2, 4]), (1, [1, 2]), (2, [3, 2]), (3, [4, 1])]
 
+    #Sort the indexed list.
+    #    The 'key' argument tells Python how to sort. We're sorting based on
+    #    the first element of the sublist, which is the second item in our tuple (item[1]).
+    #    So, we use a lambda function to access that element (item[1][0]).
+    
     sorted_list = sorted(indexed_list, key=lambda item: item[1][0])
-    #print(sorted_list)
+    #print(sorted_list)  --> (1, [1, 2]), (0, [2, 4]), (2, [3, 2]), (3, [4, 1])]
     ## list is sorted in tuple (index pos, [starttime, process_time])
 
     res = []
