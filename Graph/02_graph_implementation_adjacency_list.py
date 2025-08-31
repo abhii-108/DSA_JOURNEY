@@ -1,0 +1,91 @@
+# To Implement Graph Insertion Operation Adjacency List 
+
+def add_node(v):
+    # check given node already present in graph 
+    if v in graph:
+        print(f"Node/vertices {v} already present in graph")
+    ## adding the node 
+    else:
+        graph[v] = []
+
+# undirected & un-wighted graph 
+def add_edges(v1,v2):
+    ## check if both vertices are present in graph 
+    if v1 not in graph:
+        print(f'node {v1} not present in graph ')
+    elif v2 not in graph:
+        print(f'node {v2} is not present in graph')
+    
+    else:
+        graph[v1].append(v2)
+        graph[v2].append(v1)
+
+
+# undirected & weighted graph 
+def add_edges_weighted(v1,v2, cost):
+    ## check if both vertices are present in graph 
+    if v1 not in graph:
+        print(f'node {v1} not present in graph ')
+    elif v2 not in graph:
+        print(f'node {v2} is not present in graph')
+    
+    else:
+        list1 = [v2, cost]
+        list2 = [v1, cost]
+        graph[v1].append(list1)
+        graph[v2].append(list2)
+
+
+## directed & un-weighted graph 
+def add_edges_weighted_undirected(v1,v2):
+    ## check if both vertices are present in graph 
+    if v1 not in graph:
+        print(f'node {v1} not present in graph ')
+    elif v2 not in graph:
+        print(f'node {v2} is not present in graph')
+    
+    else:
+        graph[v1].append(v2)
+
+
+# undirected & weighted graph 
+def add_edges_weighted_directed(v1,v2, cost):
+    ## check if both vertices are present in graph 
+    if v1 not in graph:
+        print(f'node {v1} not present in graph ')
+    elif v2 not in graph:
+        print(f'node {v2} is not present in graph')
+    
+    else:
+        list1 = [v2, cost]
+        graph[v1].append(list1)
+
+
+
+graph = {}
+
+add_node('A')
+print(graph)  ## {'A': []}
+
+add_node('B')
+print(graph)  ## {'A': [], 'B': []}
+
+#add_edges('A','B')
+print(graph)  ## {'A': ['B'], 'B': ['A']}
+
+add_node('C')
+print(graph) ## {'A': ['B'], 'B': ['A'], 'C': []}
+
+
+#add_edges_weighted('A','C',10)
+print(graph)  ## {'A': [['C', 10]], 'B': [], 'C': [['A', 10]]}
+
+
+# add_edges_weighted_directed('A','B')
+# add_edges_weighted_directed('C','B')
+print(graph) ## {'A': ['B'], 'B': [], 'C': ['B']}
+
+add_edges_weighted_directed('A','C',10)
+add_edges_weighted_directed('B','C',20)
+
+print(graph)  ## {'A': [['C', 10]], 'B': [['C', 20]], 'C': []}

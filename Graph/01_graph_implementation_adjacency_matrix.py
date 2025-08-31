@@ -91,11 +91,21 @@ add_node("C")
 add_edge_weight_cost('A','B',20)
 add_edge_weight_cost('C','B',10)
 
+
 print("After node addition")
 print(nodes)
 print_graph()
 
+# ['A', 'B', 'C']
+# 0   20  0
+# 20  0   10
+# 0   10  0
 
+
+# ['A', 'B', 'C']
+# 0   20  0
+# 0   0   0
+# 0   10  0
 
 
 
