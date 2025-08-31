@@ -16,6 +16,23 @@ def add_node(v):
         temp = [0] * node_count
         graph.append(temp)
 
+## To add Edge
+def add_edge(v1,v2):
+    # need to check if given nodes are present in graph 
+    if v1 not in nodes:
+        print(f"Given node {v1} is not present in garph")
+    elif v2 not in nodes:
+        print(f"Given node {v2} is not present in garph")
+    else:
+        # we need change in matrix from 0 to 1 
+        #  Need to find index of v1 & v2 
+        index1 = nodes.index(v1)
+        index2 = nodes.index(v2)
+
+        graph[index1][index2] = 1
+        graph[index2][index1] = 1
+
+
 def print_graph():
     for i in range(node_count):
         for j in range(node_count):
@@ -30,6 +47,9 @@ print("Before adding a node ")
 print(nodes)
 add_node("A")
 add_node("B")
+add_node("C")
+add_edge('A','B')
+add_edge('C','B')
 print("After node addition")
 print(nodes)
 print_graph()
