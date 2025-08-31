@@ -32,11 +32,44 @@ def add_edge(v1,v2):
         graph[index1][index2] = 1
         graph[index2][index1] = 1
 
+## undirected weighted graph 
+def add_edge_cost(v1,v2,cost):
+    # need to check if given nodes are present in graph 
+    if v1 not in nodes:
+        print(f"Given node {v1} is not present in garph")
+    elif v2 not in nodes:
+        print(f"Given node {v2} is not present in garph")
+    else:
+        # we need change in matrix from 0 to 1 
+        #  Need to find index of v1 & v2 
+        index1 = nodes.index(v1)
+        index2 = nodes.index(v2)
+
+        graph[index1][index2] = cost
+        graph[index2][index1] = cost
+
+
+## directed weighted graph
+
+def add_edge_weight_cost(v1,v2,cost):
+    # need to check if given nodes are present in graph 
+    if v1 not in nodes:
+        print(f"Given node {v1} is not present in garph")
+    elif v2 not in nodes:
+        print(f"Given node {v2} is not present in garph")
+    else:
+        # we need change in matrix from 0 to 1 
+        #  Need to find index of v1 & v2 
+        index1 = nodes.index(v1)
+        index2 = nodes.index(v2)
+
+        graph[index1][index2] = cost
+        #graph[index2][index1] = cost
 
 def print_graph():
     for i in range(node_count):
         for j in range(node_count):
-            print(graph[i][j], end=" ")
+            print(format(graph[i][j],"<3"), end=" ")
         print()
 
 nodes = [] ## all vertices are store to nodelist 
@@ -48,8 +81,16 @@ print(nodes)
 add_node("A")
 add_node("B")
 add_node("C")
-add_edge('A','B')
-add_edge('C','B')
+# add_edge('A','B')
+# add_edge('C','B')
+
+# add_edge_cost('A','B',20)
+# add_edge_cost('C','B',10)
+
+
+add_edge_weight_cost('A','B',20)
+add_edge_weight_cost('C','B',10)
+
 print("After node addition")
 print(nodes)
 print_graph()
