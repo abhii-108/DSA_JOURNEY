@@ -90,6 +90,18 @@ def delete_node(v):
             i.pop(index1)
 
 
+def delete_edge(v1,v2):
+    if v1 not in nodes:
+        print(f' node {v1} is not present in graph')
+    elif v2 not in nodes:
+        print(f'Node {v2} not in nodes')
+
+    else:
+        index1 = nodes.index(v1)
+        index2 = nodes.index(v2)
+
+        graph[index1][index2] = 0 
+        graph[index2][index1] = 0
 
 nodes = [] ## all vertices are store to nodelist 
 graph = []
@@ -128,14 +140,19 @@ print(nodes)
 # 0   10  0
 
 
-print("node deletion")
-delete_node('A')
-print(nodes)
-print_graph()
+# print("node deletion")
+# delete_node('A')
+# print(nodes)
+# print_graph()
 # ['B', 'C']
 # 0   0
 # 10  0
 
+print_graph()
+print("Edge deletion")
+delete_edge('A','B')
+print(nodes)
+print_graph()
 
 
 
