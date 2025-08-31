@@ -93,19 +93,37 @@ def delete_edge(v1,v2):
             graph[v2].remove(v1)
 
 
-graph = {}
 
+######### DFS iteration ##############
+
+def dfs(node,visited,graph):
+    ## check for node in visited 
+    if node not in graph:
+        print('Give not present in graph')
+        return
+    if node not in visited:
+        print(node)
+        visited.add(node)
+
+        for new_node in graph[node]:
+            dfs(new_node, visited, graph)
+
+        
+
+
+graph = {}
+visited = set()
 add_node('A')
-print(graph)  ## {'A': []}
+#print(graph)  ## {'A': []}
 
 add_node('B')
-print(graph)  ## {'A': [], 'B': []}
+#print(graph)  ## {'A': [], 'B': []}
 
 add_edges('A','B')
-print(graph)  ## {'A': ['B'], 'B': ['A']}
+#print(graph)  ## {'A': ['B'], 'B': ['A']}
 
 add_node('C')
-print(graph) ## {'A': ['B'], 'B': ['A'], 'C': []}
+#print(graph) ## {'A': ['B'], 'B': ['A'], 'C': []}
 
 
 #add_edges_weighted('A','C',10)
@@ -122,10 +140,12 @@ print(graph) ## {'A': ['B'], 'B': ['A'], 'C': []}
 add_edges('B','A')
 add_edges('A','C')
 add_edges('B','C')
-print(graph)  ## {'A': [['C', 10]], 'B': [['C', 20]], 'C': []}
+#print(graph)  ## {'A': [['C', 10]], 'B': [['C', 20]], 'C': []}
 
 #delete_node('C')
 #print(graph)
 
-delete_edge('A','C')
+# # delete_edge('A','C')
 print(graph)
+
+dfs('K',visited,graph)
