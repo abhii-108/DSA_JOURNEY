@@ -16,9 +16,11 @@ def add_edges(v1,v2):
     elif v2 not in graph:
         print(f'node {v2} is not present in graph')
     
-    else:
-        graph[v1].append(v2)
-        graph[v2].append(v1)
+    else:## We need to add this check conditio
+        if v2 not in graph[v1]:
+            graph[v1].append(v2)
+        if v1 not in graph[v2]:
+            graph[v2].append(v1)
 
 
 # undirected & weighted graph 
@@ -62,6 +64,22 @@ def add_edges_weighted_directed(v1,v2, cost):
 
 
 
+#### Delete Node 
+def delete_node(v):
+    ## check node in graph 
+    if v not in graph:
+        print(f'node {v} is not present in graph')
+    else:
+        ## delete key value pair from dictionary 
+        graph.pop(v)
+
+        for key in graph:
+            list1 = graph[key]
+            if v in list1:
+                list1.remove(v)
+
+
+
 graph = {}
 
 add_node('A')
@@ -70,7 +88,7 @@ print(graph)  ## {'A': []}
 add_node('B')
 print(graph)  ## {'A': [], 'B': []}
 
-#add_edges('A','B')
+add_edges('A','B')
 print(graph)  ## {'A': ['B'], 'B': ['A']}
 
 add_node('C')
@@ -78,14 +96,20 @@ print(graph) ## {'A': ['B'], 'B': ['A'], 'C': []}
 
 
 #add_edges_weighted('A','C',10)
-print(graph)  ## {'A': [['C', 10]], 'B': [], 'C': [['A', 10]]}
+#print(graph)  ## {'A': [['C', 10]], 'B': [], 'C': [['A', 10]]}
 
 
 # add_edges_weighted_directed('A','B')
 # add_edges_weighted_directed('C','B')
-print(graph) ## {'A': ['B'], 'B': [], 'C': ['B']}
+#print(graph) ## {'A': ['B'], 'B': [], 'C': ['B']}
 
-add_edges_weighted_directed('A','C',10)
-add_edges_weighted_directed('B','C',20)
+# add_edges_weighted_directed('A','C',10)
+# add_edges_weighted_directed('B','C',20)
 
+add_edges('B','A')
+add_edges('A','C')
+add_edges('B','C')
 print(graph)  ## {'A': [['C', 10]], 'B': [['C', 20]], 'C': []}
+
+delete_node('C')
+print(graph)
