@@ -72,6 +72,25 @@ def print_graph():
             print(format(graph[i][j],"<3"), end=" ")
         print()
 
+
+#### Node deletion 
+def delete_node(v):
+    global node_count
+    ## check for node is present or not 
+    if v not in nodes:
+        print(f"Node {v} is not present in graph")
+    else:
+        ## first we need to find the index of node v 
+        index1 = nodes.index(v)
+        node_count -= 1
+        nodes.remove(v)
+        graph.pop(index1)
+
+        for i in graph:
+            i.pop(index1)
+
+
+
 nodes = [] ## all vertices are store to nodelist 
 graph = []
 node_count=0
@@ -90,11 +109,12 @@ add_node("C")
 
 add_edge_weight_cost('A','B',20)
 add_edge_weight_cost('C','B',10)
+add_edge_weight_cost('B','C',10)
 
 
 print("After node addition")
 print(nodes)
-print_graph()
+#print_graph()
 
 # ['A', 'B', 'C']
 # 0   20  0
@@ -108,8 +128,13 @@ print_graph()
 # 0   10  0
 
 
-
-
+print("node deletion")
+delete_node('A')
+print(nodes)
+print_graph()
+# ['B', 'C']
+# 0   0
+# 10  0
 
 
 
