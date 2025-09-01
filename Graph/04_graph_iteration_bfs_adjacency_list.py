@@ -1,4 +1,6 @@
-# To Implement Graph Insertion Operation Adjacency List 
+# To Implement Graph  Operation Adjacency List 
+
+from collections import deque
 
 def add_node(v):
     # check given node already present in graph 
@@ -94,21 +96,23 @@ def delete_edge(v1,v2):
 
 
 
-######### DFS iteration ##############
-
-def dfs(node,visited,graph):
-    ## check for node in visited 
+######### BFS iteration recursion ##############
+def bfs(node, visited, graph):
+    #check for node in graph 
     if node not in graph:
-        print('Give not present in graph')
-        return
-    if node not in visited:
-        print(node)
-        visited.add(node)
+        print('node {node} not present in graph')
+        return 
+    queue = deque(node)
+    visited.add(node)
+    while queue:
+        curr_node = queue.popleft()
+        print(curr_node)
+        for x in graph[curr_node]:
+            if x not in visited:
+                queue.append(x)
+                visited.add(x)
+            
 
-        for new_node in graph[node]:
-            dfs(new_node, visited, graph)
-
-        
 
 
 graph = {}
@@ -140,6 +144,11 @@ add_node('C')
 add_edges('B','A')
 add_edges('A','C')
 add_edges('B','C')
+add_node('D')
+add_node('E')
+add_edges('D','E')
+add_edges('A','E')
+add_edges('B','D')
 #print(graph)  ## {'A': [['C', 10]], 'B': [['C', 20]], 'C': []}
 
 #delete_node('C')
@@ -148,4 +157,7 @@ add_edges('B','C')
 # # delete_edge('A','C')
 print(graph)
 
-dfs('K',visited,graph)
+
+
+print('----- BFS_iterative-------')
+bfs('A',visited,graph)
