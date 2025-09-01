@@ -7,6 +7,7 @@
 
 
 from collections import deque
+from typing import List
 
 class Solution:
     def minKnightMoves(self, x:int, y:int ) -> int:
@@ -43,10 +44,67 @@ class Solution:
             moves_count += 1
         
         return -1 
-    
+
+
+class Solution_two:
+    def minKnightMoves_2(self, n:int, knightPos:List, targetPos:list ) -> int:
+    ## first converting the n*n chess in matrix to 0,0 
+        src_x = n - knightPos[1]
+        src_y = knightPos[0] - 1 
+
+        target_x = n - targetPos[1]
+        target_y = targetPos[0] - 1
+
+        directions = ((-2, 1), (-1, 2), (1, 2), (2, 1), (2, -1), (1, -2), (-1, -2), (-2, -1))
+        moves_count= 0 
+        queue = deque([(src_x, src_y)])
+
+        # Visited array to keep track of visited squares
+        visited = [[0 for _ in range(n)] for _ in range(n) ]
+
+        # [
+        # [0, 0, 0, 0, 0],
+        # [0, 0, 0, 0, 0],
+        # [0, 0, 0, 0, 0],
+        # [0, 0, 0, 0, 0],
+        # [0, 0, 0, 0, 0]
+        # ]
+        visited[src_x][src_y] = 1
+
+        while queue: 
+            q_len = len(queue)
+
+            for _ in range(q_len):
+                
+                curr_x, curr_y = queue.popleft()
+
+                if (curr_x == target_x and curr_y == target_y):
+                    return moves_count 
+                
+                for delta_i, delta_j in directions:
+
+                    new_i = delta_i + curr_x 
+                    new_j = delta_j + curr_y 
+
+                    if (new_i >= 0 and new_j >= 0 and new_i < n and new_j < n and visited[new_i][new_j] == 0 ):
+                        visited[new_i][new_j] = 1
+                        queue.append((new_i, new_j))
+            
+            moves_count += 1
+        
+        return moves_count
+
+
+               
+
 if __name__ == "__main__":
     # Example test cases:
     op = Solution()
     print("Example 1:", op.minKnightMoves(2, 1))  # Expected: 1
     print("Example 2:", op.minKnightMoves(5, 5))  # Expected: 4 (one possible answer)
     print("Example 3:", op.minKnightMoves(0, 0))  # Expected: 0
+
+
+    op2 = Solution_two()
+    print("Example 2.1:", op2.minKnightMoves_2(3,[3, 3],[1,2])) 
+    print("Example 2.2:", op2.minKnightMoves_2(6, [4, 5],[1,1])) 
