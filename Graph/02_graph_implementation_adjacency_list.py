@@ -70,7 +70,7 @@ def delete_node(v):
     if v not in graph:
         print(f'node {v} is not present in graph')
     else:
-        ## delete key value pair from dictionary 
+        ## delete key value pair from dictionary for pop method we need to provide dictionary key 
         graph.pop(v)
 
         for key in graph:
