@@ -10,11 +10,21 @@ def add_node(v):
         nodes.append(v)  ## appending new node to nodes list 
         # now we need to add new row & column to adjacency matrix with 0 value 
         ## First ADD the column 
+        
+        ## for first time graph will be none so it will not run. 
+        ## After addition of a row our graph will look like [0]
+
+        ## second time when we add node, column in graph will give list of list and in that list we will append 0 so it will be [[0,0]] 
+        ## After row addition it will become like [[0,0], [0,0]]
+
+        ## Third time when we add node, column in graph will iterate over list of list so we now have 2 list of [0,0] after column addition it will look like [ [0,0,0], [0,0,0] ] 
         for n in graph:
             n.append(0)
+        print(f'after adding column {graph}')
         #now we create a row for new node to be added in adjacency matrix     
         temp = [0] * node_count
         graph.append(temp)
+        print(f'after adding row {graph}')
 
 ## To add Edge
 def add_edge(v1,v2):
@@ -112,47 +122,47 @@ print(nodes)
 add_node("A")
 add_node("B")
 add_node("C")
-# add_edge('A','B')
-# add_edge('C','B')
+# # add_edge('A','B')
+# # add_edge('C','B')
 
-# add_edge_cost('A','B',20)
-# add_edge_cost('C','B',10)
-
-
-add_edge_weight_cost('A','B',20)
-add_edge_weight_cost('C','B',10)
-add_edge_weight_cost('B','C',10)
+# # add_edge_cost('A','B',20)
+# # add_edge_cost('C','B',10)
 
 
-print("After node addition")
-print(nodes)
-#print_graph()
-
-# ['A', 'B', 'C']
-# 0   20  0
-# 20  0   10
-# 0   10  0
+# add_edge_weight_cost('A','B',20)
+# add_edge_weight_cost('C','B',10)
+# add_edge_weight_cost('B','C',10)
 
 
-# ['A', 'B', 'C']
-# 0   20  0
-# 0   0   0
-# 0   10  0
+# print("After node addition")
+# print(nodes)
+# #print_graph()
+
+# # ['A', 'B', 'C']
+# # 0   20  0
+# # 20  0   10
+# # 0   10  0
 
 
-# print("node deletion")
-# delete_node('A')
+# # ['A', 'B', 'C']
+# # 0   20  0
+# # 0   0   0
+# # 0   10  0
+
+
+# # print("node deletion")
+# # delete_node('A')
+# # print(nodes)
+# # print_graph()
+# # ['B', 'C']
+# # 0   0
+# # 10  0
+
+# print_graph()
+# print("Edge deletion")
+# delete_edge('A','B')
 # print(nodes)
 # print_graph()
-# ['B', 'C']
-# 0   0
-# 10  0
-
-print_graph()
-print("Edge deletion")
-delete_edge('A','B')
-print(nodes)
-print_graph()
 
 
 
