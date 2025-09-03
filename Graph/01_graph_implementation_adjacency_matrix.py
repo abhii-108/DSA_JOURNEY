@@ -18,13 +18,14 @@ def add_node(v):
         ## After row addition it will become like [[0,0], [0,0]]
 
         ## Third time when we add node, column in graph will iterate over list of list so we now have 2 list of [0,0] after column addition it will look like [ [0,0,0], [0,0,0] ] 
+        ## After row addition graph will look like [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
         for n in graph:
             n.append(0)
-        print(f'after adding column {graph}')
+        ##print(f'after adding column {graph}')
         #now we create a row for new node to be added in adjacency matrix     
         temp = [0] * node_count
         graph.append(temp)
-        print(f'after adding row {graph}')
+        ##print(f'after adding row {graph}')
 
 ## To add Edge
 def add_edge(v1,v2):
@@ -35,7 +36,7 @@ def add_edge(v1,v2):
         print(f"Given node {v2} is not present in garph")
     else:
         # we need change in matrix from 0 to 1 
-        #  Need to find index of v1 & v2 
+        #  Need to find index of v1 & v2 in nodes list [] 
         index1 = nodes.index(v1)
         index2 = nodes.index(v2)
 
@@ -51,7 +52,7 @@ def add_edge_cost(v1,v2,cost):
         print(f"Given node {v2} is not present in garph")
     else:
         # we need change in matrix from 0 to 1 
-        #  Need to find index of v1 & v2 
+        #  Need to find index of v1 & v2 in nodes list [] 
         index1 = nodes.index(v1)
         index2 = nodes.index(v2)
 
@@ -93,9 +94,11 @@ def delete_node(v):
         ## first we need to find the index of node v 
         index1 = nodes.index(v)
         node_count -= 1
-        nodes.remove(v)
-        graph.pop(index1)
-
+        nodes.remove(v) ## Remove the node from nodes list [] 
+        graph.pop(index1)  ## Remove the row from the graph 
+        ###<-- pop() removes an element by its index, whereas remove() removes an element by its value -->
+        ## remaining elements shift to the left, and the length of each list is reduced by one 
+        ## pop the node value from the graph 
         for i in graph:
             i.pop(index1)
 
