@@ -1,3 +1,9 @@
+# Maximum Level Sum of a Binary Tree (medium)
+
+# You are given the root of a binary tree. The level of its root node is 1, the level of its children is 2, and so on.
+
+# Return the level x where the sum of the values of all nodes is the highest. If there are multiple levels with the same maximum sum, return the smallest level number x.
+
 from collections import deque
 
 class TreeNode:
