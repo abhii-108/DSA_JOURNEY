@@ -42,11 +42,11 @@ def even_odd(node):
 
             node = q.popleft()
 
-            if even:
-                if node.key % 2 == 0 or node.key <= prev:
+            if even: 
+                if node.key % 2 == 0 or node.key <= prev:  # to check if value is even or less then prev 
                     return False
             else:
-                if node.key % 2 == 1 or node.key >= prev:
+                if node.key % 2 == 1 or node.key >= prev: # to check if value is odd or greater then prev
                     return False 
             
             if node.lchild:
