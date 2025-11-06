@@ -1,3 +1,11 @@
+#Maximum Width of Binary Tree (medium)
+
+# Given the root of a binary tree, find the maximum width of the tree.
+
+# The maximum width is the widest level in the tree.
+
+# The width of a level is the number of nodes between the leftmost and rightmost non-null nodes, where the null nodes between the end-nodes that would be present in a complete binary tree extending down to that level are also counted into the length calculation.
+
 from collections import deque 
 class TreeNode:
     def __init__(self,key):
