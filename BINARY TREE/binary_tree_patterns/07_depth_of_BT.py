@@ -71,9 +71,9 @@ my_tree.rchild = TreeNode(30)
 my_tree.lchild.lchild = TreeNode(15)
 my_tree.lchild.rchild = TreeNode(23)
 my_tree.lchild.lchild.lchild = TreeNode(18)
-my_tree.lchild.lchild.lchild.rchild = TreeNode(25)
-my_tree.rchild.lchild = TreeNode(33)
-my_tree.rchild.rchild = TreeNode(35)
+my_tree.lchild.lchild.rchild = TreeNode(25)
+# my_tree.rchild.lchild = TreeNode(33)
+# my_tree.rchild.rchild = TreeNode(35)
 
 
 print(depth_bfs(my_tree))
