@@ -1,4 +1,4 @@
-from decimal import Decimal, localcontext
+from decimal import Decimal
 
 def run_timing():
     
@@ -16,8 +16,7 @@ def run_timing():
 
         total_time += float(one_run)
 
-    with localcontext(prec=4):
-        average_time = Decimal(total_time/number_of_runs)
+        average_time = (total_time/number_of_runs)
 
     print(f'Average time is {average_time:.2f}, over {number_of_runs} runs..! ')
 
