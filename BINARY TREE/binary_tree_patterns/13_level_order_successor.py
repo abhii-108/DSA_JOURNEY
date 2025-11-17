@@ -4,6 +4,19 @@
 #The strategy is to perform a standard BFS. We'll use a queue to store the nodes to be visited. 
 #As we dequeue each node, we check if its value matches the given key. If we find the node, the very next node we dequeue will be its level order successor.
 
+# Given a root of the binary tree and an integer key, find the level order successor of the node containing the given key as a value in the tree.
+
+# The level order successor is the node that appears right after the given node in the level order traversal.
+
+# Examples
+# Example 1
+# Input: root = [1, 2, 3, 4, 5], key = 3
+# Output: 4
+# Explanation: The level-order traversal of the tree is [1, 2, 3, 4, 5]. The successor of 3 in this order is 4.
+# Example 2
+# Input: root = [12, 7, 1, 9, null, 10, 5], key = 9
+# Output: 10
+
 from collections import deque
 
 class TreeNode:

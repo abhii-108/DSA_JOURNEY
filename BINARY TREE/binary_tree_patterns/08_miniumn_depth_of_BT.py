@@ -50,7 +50,17 @@ def min_depth_dfs(root):
     # Both children exist: return min of both subtrees
     return 1 + min(min_depth_dfs(root.lchild), min_depth_dfs(root.rchild))
 
+def min_depth_dfs2(root):
+
+    if not root:
+        return 0 
     
+
+    left = min_depth_dfs2(root.lchild)
+    right = min_depth_dfs2(root.rchild)
+
+
+    return 1+min(left,right)    
 
 
 
@@ -63,10 +73,10 @@ my_tree.lchild.lchild = TreeNode(15)
 my_tree.lchild.rchild = TreeNode(23)
 my_tree.lchild.lchild.lchild = TreeNode(18)
 my_tree.lchild.lchild.lchild.rchild = TreeNode(25)
-# my_tree.rchild.lchild = TreeNode(33)
-# my_tree.rchild.rchild = TreeNode(35)
+my_tree.rchild.lchild = TreeNode(33)
+my_tree.rchild.rchild = TreeNode(35)
 
 
 print(min_depth_bfs(my_tree))
 print('min depth using DFS ')
-print(min_depth_dfs(my_tree))
+print(min_depth_dfs2(my_tree))

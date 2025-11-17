@@ -35,7 +35,15 @@ def sum_all_node(root):
 
 
 ################################# SUM NODE With EVEN GrandaParents (BFS) ########################
+# Given the root of a binary tree, return the total sum of the values of all nodes that have a grandparent with an even number. If no such nodes exist, return 0.
 
+# A grandparent of a node is defined as the parent of its parent, if both exist.
+
+# Example 1:
+
+# Input: root = [4, 2, 6, 3, 5, null, 8]
+# Expected Output: 16
+# Justification: Node values 3, 5, and 8 have 4 as their grandparent. Since 4 is even, their sum is 3 + 5 + 8 = 16
 def sum_even_grandparent(root):
 
     if not root:

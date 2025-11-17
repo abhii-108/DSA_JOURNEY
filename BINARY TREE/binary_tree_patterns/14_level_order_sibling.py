@@ -1,6 +1,7 @@
 ## Populating Next Right Pointers in Each Node II
 # Need to connect each node to its "next right" neighbor
 
+#Given a root of the binary tree, connect each node with its level order successor. The last node of each level should point to a null node.
 
 # op should be like this if we iterate it 
 # 1 -> null
@@ -42,6 +43,31 @@ def level_order_sibling(root):
                 q.append(curr_node.right)
 
     return root 
+
+
+def all_level_order_sibling(root):
+
+    if not root:
+        return
+    
+    q = deque([root])
+    prev_node = None 
+    while q :
+        q_len = len(q)
+        
+        curr_node = q.popleft()
+
+        if prev_node:
+            prev_node.next = curr_node
+        
+        prev_node = curr_node 
+
+        if curr_node.left:
+            q.append(curr_node.left)
+        if curr_node.right:
+            q.append(curr_node.right)
+
+    return root 
     
 
 my_tree = TreeNode(10)
@@ -56,7 +82,14 @@ my_tree.left.left.left.right = TreeNode(25)
 my_tree.right.left = TreeNode(33)
 my_tree.right.right = TreeNode(35)
 
+root1 = TreeNode(1)
+root1.left = TreeNode(2)
+root1.right = TreeNode(4)
+root1.right.left = TreeNode(3)
+root1.right.right = TreeNode(6)
+
 current_level_node  = level_order_sibling(my_tree)
+all_level_node = all_level_order_sibling(root1)
 
 # Loop through each level
 while current_level_node:
@@ -73,6 +106,14 @@ while current_level_node:
     # Move to the next level by finding the first node of the next level
     current_level_node = current_level_node.left if current_level_node.left else current_level_node.right
 
+
+## all_level_order_sibling
+print('------------- OP of all_level_order_sibling -----------------')
+current_node = all_level_node
+while current_node:
+    print(f"{current_node.val} -> ", end="")
+    current_node = current_node.next
+print("null")
 
 
 
