@@ -43,4 +43,17 @@ print(pig_latin_punctuated('Abhilash!'))
 print(pig_latin_punctuated('Python is good ?'))
 
 
+
+
+def pig_latin_multivowels(word):
+
+    number_of_vowels = len(set(word) & set('aeiou'))
+
+    if number_of_vowels > 1:
+        print('It contain more in 1 vowels')
+        return f'{word}way'
     
+    return f'{word[1:]}{word[0]}ay'
+
+
+print(pig_latin_multivowels('Abhilash'))
