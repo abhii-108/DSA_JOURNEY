@@ -39,7 +39,6 @@ def mysum_bigger_than(threshold, *items):
 
     return output 
 
-#print(mysum_bigger_than(10,())) ## ()
 print(mysum_bigger_than(10, 20, 30, 40))
 print(mysum_bigger_than(3.5, 1.1, 4.0, 3.5, 5.5) )
 
@@ -97,3 +96,4 @@ d2 = {'A': 'y', 'C': 2}
 d3 = {'A': 'z', 'B': 3, 'D': 4}
 
 print(combine_dicts(d1,d2,d3))
+

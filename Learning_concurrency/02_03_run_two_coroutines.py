@@ -10,6 +10,7 @@ async def hello() -> str:
     return "Hello abhilash..!"
 
 async def main() -> None:
+    print(sync_start = time.time())
     message = await hello()
     one_plus_one = await add_one(1)
     print(one_plus_one)
